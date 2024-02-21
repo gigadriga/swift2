@@ -1,0 +1,61 @@
+let numbers = [5, 1, 8, 3, 9, 4, 6, 2, 7]
+
+let sortedF = numbers.sorted { $0 < $1 }
+print("Отсортированный по возрастанию: \(sortedF)")
+
+let sortedB = numbers.sorted { $0 > $1 }
+print("Отсортированный по убыванию: \(sortedB)")
+
+func sortFriendName(names: [String]) -> [String] {
+    names.sorted { $0.count < $1.count }
+}
+func addFriends(names: String...) -> [String] {
+    var NewFriends = [String]()
+    
+    for name in names {
+        NewFriends.append(name)
+    }
+    
+    return NewFriends
+}
+let friends = ["Иван", "Дмитрий", "Владислав", "Никита", "Сергей"]
+let sortedFriends = sortFriendName(names: friends)
+
+var dictionary = [Int: String]()
+
+for friend in sortedFriends {
+    let length = friend.count
+    dictionary[length] = friend
+}
+
+for (key, value) in dictionary {
+    print("\(key): \(value)")
+}
+
+let emptyStringArray = [String]()
+let emptyIntArray = [Int]()
+let notEmptyStringArray = ["Один", "Два", "Три"]
+let notEmptyIntArray = [2, 4, 6, 8, 10, 12, 14]
+EmptyCheck(stringArray: emptyStringArray, intArray: notEmptyIntArray)
+EmptyCheck(stringArray: notEmptyStringArray, intArray: emptyIntArray)
+
+func EmptyCheck(stringArray: [String], intArray: [Int]) {
+    if stringArray.isEmpty {
+        print("Пустой массив строк, добавить значение")
+        var mutableArray = stringArray
+        mutableArray.append("Новое значение")
+        print(mutableArray)
+    } else {
+        print("Массив строк не пуст: \(stringArray)")
+    }
+    
+    if intArray.isEmpty {
+        print("Пустой массив чисел, добавить")
+        var mutableArray = intArray
+        mutableArray.append(17)
+        print(mutableArray)
+    } else {
+        print("Массив чисел не пуст: \(intArray)")
+    }
+}
+
